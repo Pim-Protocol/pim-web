@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @theme inline {
+  /* Core Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -14,53 +15,85 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+
   --color-border: var(--border);
   --color-ring: var(--ring);
 
+  /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
+  /* Radius */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
 }
 
+/* -------------------------------------------------------------------------- */
+/* LIGHT THEME */
+/* -------------------------------------------------------------------------- */
+
 :root {
-  --background: oklch(0.98 0 0);
-  --foreground: oklch(0.15 0 0);
+  /* Backgrounds */
+  --background: #ffffff;
+  --foreground: #0f0e0c;
 
-  --primary: oklch(0.22 0 0);
-  --primary-foreground: oklch(0.98 0 0);
+  --surface: #f5f4f1;
+  --surface-secondary: #edeae4;
 
-  --secondary: oklch(0.94 0 0);
-  --secondary-foreground: oklch(0.22 0 0);
+  /* Brand */
+  --primary: #f59e0b;
+  --primary-foreground: #ffffff;
 
-  --muted: oklch(0.94 0 0);
-  --muted-foreground: oklch(0.5 0 0);
+  /* Supporting */
+  --secondary: #f5f4f1;
+  --secondary-foreground: #0f0e0c;
 
-  --border: oklch(0.9 0 0);
-  --ring: oklch(0.7 0 0);
+  --muted: #f5f4f1;
+  --muted-foreground: #6a6660;
 
-  --radius: 1rem;
+  /* Borders */
+  --border: #e4e1da;
+  --ring: #f59e0b;
+
+  /* Radius */
+  --radius: 0.75rem;
 }
+
+/* -------------------------------------------------------------------------- */
+/* DARK THEME */
+/* -------------------------------------------------------------------------- */
 
 .dark {
-  --background: oklch(0.14 0 0);
-  --foreground: oklch(0.96 0 0);
+  /* Backgrounds */
+  --background: #0b0b0b;
+  --foreground: #fafafa;
 
-  --primary: oklch(0.96 0 0);
-  --primary-foreground: oklch(0.14 0 0);
+  --surface: #111111;
+  --surface-secondary: #171717;
 
-  --secondary: oklch(0.24 0 0);
-  --secondary-foreground: oklch(0.96 0 0);
+  /* Brand */
+  --primary: #f59e0b;
+  --primary-foreground: #ffffff;
 
-  --muted: oklch(0.24 0 0);
-  --muted-foreground: oklch(0.7 0 0);
+  /* Supporting */
+  --secondary: #111111;
+  --secondary-foreground: #fafafa;
 
-  --border: oklch(1 0 0 / 10%);
-  --ring: oklch(0.55 0 0);
+  --muted: #171717;
+  --muted-foreground: #a3a3a3;
+
+  /* Borders */
+  --border: #262626;
+  --ring: #f59e0b;
 }
+
+/* -------------------------------------------------------------------------- */
+/* BASE STYLES */
+/* -------------------------------------------------------------------------- */
 
 @layer base {
   * {
@@ -73,5 +106,39 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
+
+  ::selection {
+    background: rgba(245, 158, 11, 0.25);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 20px;
 }

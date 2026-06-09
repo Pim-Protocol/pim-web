@@ -1,15 +1,15 @@
 import { cn } from "@/lib/utils";
 
-interface CardProps {
+interface ContainerProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export function Card({ children, className }: CardProps) {
+export function Container({ children, className }: ContainerProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-surface p-6",
+        "mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8",
         className,
       )}
     >
