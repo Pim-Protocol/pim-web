@@ -76,7 +76,7 @@ const companyLinks = [
     href: "#footer",
   },
   {
-    label: "pimprotocol.com",
+    label: "pimprotocol.org",
     href: "#hero",
   },
   {
@@ -149,7 +149,7 @@ export function Footer() {
 
               <p>QoLLabs Ltd · Research Partner</p>
 
-              <p>pim.global · pimprotocol.com · qollabs.org</p>
+              <p>pim.global · pimprotocol.org · qollabs.org</p>
             </div>
           </div>
 

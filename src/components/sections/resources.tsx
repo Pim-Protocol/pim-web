@@ -169,7 +169,7 @@ export function Resources() {
               "
             >
               Investor relations:
-              <span className="ml-2 text-primary">contact@pimprotocol.com</span>
+              <span className="ml-2 text-primary">contact@pimprotocol.org</span>
             </p>
           </div>
 

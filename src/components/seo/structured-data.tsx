@@ -6,7 +6,7 @@ export function StructuredData() {
 
     name: "Pim Protocol",
 
-    url: "https://pimprotocol.com",
+    url: "https://pimprotocol.org",
 
     description:
       "Quantum-resistant, embedded-first, energy-backed Layer-1 blockchain.",
