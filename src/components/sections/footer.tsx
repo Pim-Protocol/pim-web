@@ -149,7 +149,7 @@ export function Footer() {
 
               <p>QoLLabs Ltd · Research Partner</p>
 
-              <p>pim.global · pimprotocol.org · qollabs.org</p>
+              <p>pimprotocol.org · qollabs.org</p>
             </div>
           </div>
 

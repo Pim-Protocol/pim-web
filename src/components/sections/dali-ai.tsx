@@ -36,7 +36,7 @@ const capabilities = [
   {
     icon: Zap,
     title: "EQCF Daily Calibration",
-    description: "Rebalances energy-to-QOL conversion factors every cycle.",
+    description: "Rebalances Energy Quotient Calibration Formula every cycle.",
   },
 ];
 

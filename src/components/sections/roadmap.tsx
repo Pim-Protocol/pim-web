@@ -11,7 +11,7 @@ const roadmapItems = [
     tags: ["Whitepaper", "Architecture", "Research", "Partnership"],
   },
   {
-    period: "Q3 2026",
+    period: "To Be Determined",
     title: "Testnet Launch",
     active: true,
     description:
@@ -19,7 +19,7 @@ const roadmapItems = [
     tags: ["Testnet", "PIM-VM", "PoEC", "SEL", "100 Shards"],
   },
   {
-    period: "Q1 2027",
+    period: "To Be Determined",
     title: "Mainnet Launch",
     active: false,
     description:
@@ -27,7 +27,7 @@ const roadmapItems = [
     tags: ["Mainnet", "QoL", "Nigeria", "5K+ Nodes"],
   },
   {
-    period: "2028 — 2035",
+    period: "To Be Determined",
     title: "Scale & Expansion",
     active: false,
     description:
@@ -76,9 +76,8 @@ export function Roadmap() {
                 lg:text-4xl
               "
             >
-              Engineering in progress.
-              <br />
-              <span className="text-primary">Testnet Q3 2026.</span>
+              Engineering
+              <span className="text-primary"> in progress.</span>
             </h2>
 
             <p

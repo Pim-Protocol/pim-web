@@ -145,7 +145,7 @@ export function Hero() {
                 py-1.5
               "
             >
-              ● Pre-Launch · Testnet Q3 2026
+              ● Pre-Launch · Testnet - To Be Determined
             </Badge>
 
             <h1

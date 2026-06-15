@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/container";
 
 const qolFeatures = [
-  "Classic UTXO • 1–2% Volatility Target",
+  "Cell Model UTXO • 1–2% Volatility Target",
   "PoEC-Verified Energy Backing every 12h",
   "DemandFactor Responsive Minting",
   "Six Layered Stability Mechanisms",

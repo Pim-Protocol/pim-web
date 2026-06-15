@@ -24,7 +24,7 @@ const layers = [
     title: "Economy — ADTMS",
     icon: Coins,
     description:
-      "Adaptive Dual Token Monetary Switchtable. Critical states, QOL UTXO for payments.",
+      "Adaptive Dual Token Monetary Switchtable. Critical states, QOL UTXO Cell for payments.",
     footer: "6 stability mechanisms • demand-factor minting",
   },
   {

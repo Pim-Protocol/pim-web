@@ -44,7 +44,7 @@ const resources = [
 
 export function Resources() {
   return (
-    <section className="bg-muted/30 py-18" id="resources">
+    <section className="relative bg-muted/30 py-18" id="resources">
       <Container>
         <p
           className="
@@ -268,6 +268,42 @@ export function Resources() {
           </div>
         </div>
       </Container>
+
+      {/* Coming Soon overlay */}
+      <div
+        className="
+          absolute
+          inset-0
+
+          flex
+          flex-col
+          items-center
+          justify-center
+          gap-3
+
+          rounded-none
+          backdrop-blur-sm
+
+          bg-background/60
+        "
+      >
+        <p
+          className="
+            font-mono
+            text-[11px]
+            font-bold
+            uppercase
+            tracking-[0.3em]
+            text-primary
+          "
+        >
+          Coming Soon
+        </p>
+
+        <p className="text-sm text-muted-foreground">
+          Documents will be available here once published.
+        </p>
+      </div>
     </section>
   );
 }

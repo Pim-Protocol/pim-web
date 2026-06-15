@@ -17,7 +17,7 @@ export function NavLogo() {
           src="/pim-logo.png"
           alt="Pim Protocol logo"
           width={40}
-          height={41}
+          height={40}
           priority
           className="h-10 w-10 object-contain"
         />

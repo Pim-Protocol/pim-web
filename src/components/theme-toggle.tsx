@@ -1,13 +1,21 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
+const subscribe = () => () => {};
+
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const isClient = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
 
-  if (!resolvedTheme) {
+  if (!isClient) {
     return (
       <div
         className="

@@ -82,7 +82,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider>
           <StructuredData />
           {children}
