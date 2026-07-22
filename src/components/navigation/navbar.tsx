@@ -70,7 +70,13 @@ export function Navbar() {
           {/* Desktop only */}
           <div className="hidden lg:flex items-center gap-3">
             <Button variant="secondary" asChild>
-              <a href="#resources">Whitepaper</a>
+              <a
+                href="https://whitepaper.pimprotocol.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Whitepaper
+              </a>
             </Button>
 
             <Button

@@ -60,7 +60,13 @@ export function MobileMenu() {
               <div className="my-2 h-px bg-border" />
 
               <Button variant="secondary" className="w-full">
-                <Link href="#resources">Whitepaper</Link>
+                <Link
+                  href="https://whitepaper.pimprotocol.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Whitepaper
+                </Link>
               </Button>
 
               <Button variant="primary" className="w-full" disabled>
