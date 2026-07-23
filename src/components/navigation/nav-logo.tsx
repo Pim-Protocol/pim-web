@@ -16,10 +16,10 @@ export function NavLogo() {
         <Image
           src="/pim-logo.png"
           alt="Pim Protocol logo"
-          width={40}
+          width={33}
           height={40}
           priority
-          className="h-10 w-10 object-contain"
+          className="h-10 w-auto object-contain"
         />
       </div>
 

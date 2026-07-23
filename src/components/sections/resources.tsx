@@ -1,48 +1,17 @@
-import Link from "next/link";
+"use client";
 
-import {
-  FileText,
-  Presentation,
-  ClipboardList,
-  Cog,
-  Download,
-} from "lucide-react";
+import { Download, ExternalLink, Lock } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
-
-const resources = [
-  {
-    title: "Technical Whitepaper",
-    format: "PDF",
-    description: "Full Specification",
-    icon: FileText,
-    href: "/documents/pim-whitepaper.pdf",
-  },
-  {
-    title: "Investor Pitch Deck",
-    format: "PDF",
-    description: "PowerPoint Deck",
-    icon: Presentation,
-    href: "/documents/pim-pitch-deck.pdf",
-  },
-  {
-    title: "Executive One-Pager",
-    format: "PDF",
-    description: "2 Pages",
-    icon: ClipboardList,
-    href: "/documents/pim-one-pager.pdf",
-  },
-  {
-    title: "Technical Specifications",
-    format: "PDF",
-    description: "Protocol Specs",
-    icon: Cog,
-    href: "/documents/pim-specification.pdf",
-  },
-];
+import { DocumentViewer } from "@/components/document-viewer";
+import { useDocumentViewer } from "@/hooks/use-document-viewer";
+import { RESOURCE_DOCUMENTS } from "@/constants/resources";
+import { cn } from "@/lib/utils";
 
 export function Resources() {
+  const { activeDocument, openDocument, closeDocument } = useDocumentViewer();
+
   return (
     <section className="relative bg-muted/30 py-18" id="resources">
       <Container>
@@ -122,9 +91,9 @@ export function Resources() {
                 text-muted-foreground
               "
             >
-              Download the complete Pim Protocol technical whitepaper, investor
-              pitch deck, executive summary, and supporting protocol
-              specifications.
+              Download the complete Pim Protocol technical whitepaper,
+              litepaper, bluepaper, investor pitch deck, executive summary, and
+              supporting protocol specifications.
             </p>
 
             <div
@@ -135,27 +104,28 @@ export function Resources() {
                 gap-3
               "
             >
-              <Button asChild variant="outline">
-                <Link href="/documents/pim-whitepaper.pdf">Whitepaper PDF</Link>
-              </Button>
-
-              <Button asChild variant="outline">
-                <Link href="/documents/pim-pitch-deck.pdf">Pitch Deck PDF</Link>
-              </Button>
-
-              <Button asChild variant="outline">
-                <Link href="/documents/pim-pitch-deck.pptx">
-                  Pitch Deck PPT
-                </Link>
-              </Button>
-
-              <Button asChild variant="outline">
-                <Link href="/documents/pim-one-pager.pdf">One-Pager</Link>
-              </Button>
-
-              <Button asChild variant="outline">
-                <Link href="/documents/pim-specification.pdf">Tech Specs</Link>
-              </Button>
+              {RESOURCE_DOCUMENTS.map((document) =>
+                document.externalUrl ? (
+                  <Button key={document.id} variant="outline" asChild>
+                    <a
+                      href={document.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {document.shortLabel}
+                    </a>
+                  </Button>
+                ) : (
+                  <Button
+                    key={document.id}
+                    variant="outline"
+                    disabled={!document.available}
+                    onClick={() => openDocument(document)}
+                  >
+                    {document.shortLabel}
+                  </Button>
+                ),
+              )}
             </div>
 
             <p
@@ -185,34 +155,38 @@ export function Resources() {
               lg:mt-0
             "
           >
-            {resources.map((resource) => {
-              const Icon = resource.icon;
+            {RESOURCE_DOCUMENTS.map((document) => {
+              const Icon = document.icon;
+              const isExternal = Boolean(document.externalUrl);
+              const isInteractive = isExternal || document.available;
 
-              return (
-                <Link
-                  key={resource.title}
-                  href={resource.href}
-                  className="
-                    group
+              const cardClassName = cn(
+                `
+                  group
 
-                    flex
-                    items-center
-                    justify-between
+                  flex
+                  items-center
+                  justify-between
 
-                    rounded-2xl
-                    border
+                  rounded-2xl
+                  border
 
-                    bg-background
+                  bg-background
 
-                    p-4
+                  p-4
 
-                    transition-all
-                    duration-300
+                  text-left
 
-                    hover:border-primary/30
-                    hover:bg-primary/[0.03]
-                  "
-                >
+                  transition-all
+                  duration-300
+                `,
+                isInteractive
+                  ? "hover:border-primary/30 hover:bg-primary/[0.03]"
+                  : "cursor-not-allowed opacity-50",
+              );
+
+              const cardContent = (
+                <>
                   <div className="flex gap-3">
                     <Icon
                       size={18}
@@ -229,7 +203,7 @@ export function Resources() {
                           font-medium
                         "
                       >
-                        {resource.title}
+                        {document.title}
                       </h4>
 
                       <p
@@ -246,64 +220,74 @@ export function Resources() {
                           text-muted-foreground
                         "
                       >
-                        {resource.format}
+                        {isInteractive ? "PDF" : "Coming Soon"}
                         {" • "}
-                        {resource.description}
+                        {document.description}
                       </p>
                     </div>
                   </div>
 
-                  <Download
-                    size={16}
-                    className="
-                      text-muted-foreground
-                      transition-colors
+                  {isExternal ? (
+                    <ExternalLink
+                      size={16}
+                      className="
+                        text-muted-foreground
+                        transition-colors
 
-                      group-hover:text-primary
-                    "
-                  />
-                </Link>
+                        group-hover:text-primary
+                      "
+                    />
+                  ) : document.available ? (
+                    <Download
+                      size={16}
+                      className="
+                        text-muted-foreground
+                        transition-colors
+
+                        group-hover:text-primary
+                      "
+                    />
+                  ) : (
+                    <Lock size={16} className="text-muted-foreground" />
+                  )}
+                </>
+              );
+
+              if (isExternal) {
+                return (
+                  <a
+                    key={document.id}
+                    href={document.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClassName}
+                  >
+                    {cardContent}
+                  </a>
+                );
+              }
+
+              return (
+                <button
+                  key={document.id}
+                  type="button"
+                  disabled={!document.available}
+                  onClick={() => openDocument(document)}
+                  className={cardClassName}
+                >
+                  {cardContent}
+                </button>
               );
             })}
           </div>
         </div>
       </Container>
 
-      {/* Coming Soon overlay */}
-      <div
-        className="
-          absolute
-          inset-0
-
-          flex
-          flex-col
-          items-center
-          justify-center
-          gap-3
-
-          rounded-none
-          backdrop-blur-sm
-
-          bg-background/60
-        "
-      >
-        <p
-          className="
-            font-mono
-            text-[11px]
-            font-bold
-            uppercase
-            tracking-[0.3em]
-            text-primary
-          "
-        >
-          Coming Soon
-        </p>
-
-        <p className="text-sm text-muted-foreground">
-          Documents will be available here once published.
-        </p>
-      </div>
+      <DocumentViewer
+        document={activeDocument}
+        open={!!activeDocument}
+        onClose={closeDocument}
+      />
     </section>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { StructuredData } from "@/components/seo/structured-data";
-
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -87,6 +87,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <StructuredData />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
