@@ -196,8 +196,14 @@ export function Hero() {
                 mb-8
               "
             >
-              <Button size="lg" className="gap-2">
-                Read Whitepaper →
+              <Button size="lg" className="gap-2" asChild>
+                <a
+                  href="https://whitepaper.pimprotocol.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Whitepaper →
+                </a>
               </Button>
 
               <Button variant="outline" size="lg">

@@ -38,7 +38,7 @@ const protocolLinks = [
 const resourceLinks = [
   {
     label: "Whitepaper",
-    href: "#resources",
+    href: "https://whitepaper.pimprotocol.org",
   },
   {
     label: "Pitch Deck",
@@ -117,7 +117,9 @@ export function Footer() {
           {/* Brand */}
 
           <div className="max-w-sm">
-            <NavLogo />
+            <div className="w-34">
+              <NavLogo />
+            </div>
 
             <p
               className="
